@@ -12,7 +12,7 @@
 <body>
   <div class="noise"></div>
   <main class="hero">
-    <p class="label">Day 1</p>
+    <p class="label"><p id="header-day" class="day-label">YÜKLENİYOR...</p></p>
     <h1 class="title">Efe's 1 Million $ Journey</h1>
     <p class="subtitle">Industrial Engineering Student at Yasar University</p>
     <div class="line" aria-hidden="true"></div>
@@ -29,7 +29,9 @@
         <div class="progress-bar">
             <div id="progress-fill" class="progress-fill"></div>
         </div>
-        <p class="progress-text">%0.01 tamamlandı (Hala başındayız!)</p>
+        <p class="progress-text">
+          %<span id="progress-percent">0.01</span> tamamlandı (Hala başındayız!)
+          </p>
     </div>
 </div>
   <footer class="start-note">Started: February 2, 2026</footer>
