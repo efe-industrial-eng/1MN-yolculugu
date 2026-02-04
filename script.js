@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 4. İLERLEME HESABI (Mühendislik Formülü)
     const toplamHedef = 1000000;
-    const suAnkiKazanc = 150; // Python verisi buraya akacak
+    const suAnkiKazanc = 200; // Python verisi buraya akacak
     const yuzde = (suAnkiKazanc / toplamHedef) * 100;
 
     // 5. GÖRSEL GÜNCELLEME
