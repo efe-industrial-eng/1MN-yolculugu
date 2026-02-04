@@ -1,5 +1,5 @@
 {
-    "toplam_kazanc": 1500.0,
+    "toplam_kazanc": 1750.0,
     "gunluk_kayitlar": [
         {
             "tarih": "2026-02-02",
@@ -40,6 +40,10 @@
         {
             "tarih": "2026-02-04",
             "kazanc": 200.0
+        },
+        {
+            "tarih": "2026-02-04",
+            "kazanc": 250.0
         },
         {
             "tarih": "2026-02-04",
