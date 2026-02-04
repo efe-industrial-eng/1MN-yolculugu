@@ -3,11 +3,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const diffInDays = Math.floor((new Date() - startDate) / (1000 * 60 * 60 * 24)) + 1;
     
     // VERİLER (yonetici.py tarafından güncellenir)
-    const suAnkiKazanc = 850; 
-    const gunlukOrtalama = 283.33;
-    const kalanGun = 3526;
-    const grafikEtiketleri = ["2026-02-02", "2026-02-03", "2026-02-04", "2026-02-04", "2026-02-04", "2026-02-04", "2026-02-04", "2026-02-04"]; 
-    const grafikVerileri = [50, 100, 50, 50.0, 50.0, 50.0, 200.0, 200.0]; 
+    const suAnkiKazanc = 1050; 
+    const gunlukOrtalama = 350.0;
+    const kalanGun = 2854;
+    const grafikEtiketleri = ["2026-02-02", "2026-02-03", "2026-02-04", "2026-02-04", "2026-02-04", "2026-02-04", "2026-02-04", "2026-02-04", "2026-02-04"]; 
+    const grafikVerileri = [50, 100, 50, 50.0, 50.0, 50.0, 200.0, 200.0, 200.0]; 
 
     // PERFORMANS ANALİZİ: Bugün ortalamanın üstünde miyiz?
     const sonKazanc = grafikVerileri[grafikVerileri.length - 1];
