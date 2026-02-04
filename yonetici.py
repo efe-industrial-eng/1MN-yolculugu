@@ -11,7 +11,7 @@ def guncelle():
     gecen_gun = (bugun - baslangic).days + 1
 
     # 2. User input
-    yeni = float(input(f"💰 Enter earnings for Day {gecen_gun} (TL): "))
+    yeni = float(input(f"💰 Enter earnings for Day {gecen_gun} ($): "))
 
     # 3. Update JSON (persistence)
     with open('data.json', 'r+') as f:

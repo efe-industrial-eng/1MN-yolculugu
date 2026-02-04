@@ -9,10 +9,10 @@ def veriyi_kaydet(yeni_veri):
         json.dump(yeni_veri, dosya, indent=4)
 
 depo = veriyi_yukle()
-print(f"System ready. Current total earnings: {depo['toplam_kazanc']} TL")
+print(f"System ready. Current total earnings: ${depo['toplam_kazanc']:,.0f}")
 
 bugunku = float(input("Enter today's earnings (TL): "))
 depo['toplam_kazanc'] += bugunku
 
 veriyi_kaydet(depo)
-print(f"Success! New balance: {depo['toplam_kazanc']} TL. Data saved.")
+print(f"Success! New balance: ${depo['toplam_kazanc']:,.0f}. Data saved.")

@@ -3,11 +3,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const diffInDays = Math.floor((new Date() - startDate) / (1000 * 60 * 60 * 24)) + 1;
     
     // DATA (updated by yonetici.py)
-    const suAnkiKazanc = 1750; 
-    const gunlukOrtalama = 583.33;
-    const kalanGun = 1711;
-    const grafikEtiketleri = ["2026-02-02", "2026-02-03", "2026-02-04", "2026-02-04", "2026-02-04", "2026-02-04", "2026-02-04", "2026-02-04", "2026-02-04", "2026-02-04", "2026-02-04", "2026-02-04"]; 
-    const grafikVerileri = [50, 100, 50, 50.0, 50.0, 50.0, 200.0, 200.0, 200.0, 200.0, 250.0, 250.0]; 
+    const suAnkiKazanc = 2000; 
+    const gunlukOrtalama = 666.67;
+    const kalanGun = 1496;
+    const grafikEtiketleri = ["2026-02-02", "2026-02-03", "2026-02-04", "2026-02-04", "2026-02-04", "2026-02-04", "2026-02-04", "2026-02-04", "2026-02-04", "2026-02-04", "2026-02-04", "2026-02-04", "2026-02-04"]; 
+    const grafikVerileri = [50, 100, 50, 50.0, 50.0, 50.0, 200.0, 200.0, 200.0, 200.0, 250.0, 250.0, 250.0]; 
 
     // Performance: above daily average today?
     const sonKazanc = grafikVerileri[grafikVerileri.length - 1];
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('header-day').innerText = "DAY " + diffInDays + " in the Journey";
     document.getElementById('progress-fill').style.width = ((suAnkiKazanc / 1000000) * 100) + "%";
     document.getElementById('progress-percent').innerText = ((suAnkiKazanc / 1000000) * 100).toFixed(4);
-    document.getElementById('avg-earning').innerText = gunlukOrtalama;
+    document.getElementById('avg-earning').innerText = '$' + gunlukOrtalama.toFixed(2);
     document.getElementById('est-days').innerText = kalanGun;
     document.getElementById('target-date').innerText = hedefTarih.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
         data: {
             labels: grafikEtiketleri,
             datasets: [{
-                label: 'Daily Earnings (TL)',
+                label: 'Daily Earnings ($)',
                 data: grafikVerileri,
                 borderColor: mainColor,
                 backgroundColor: 'rgba(255, 204, 0, 0.1)',

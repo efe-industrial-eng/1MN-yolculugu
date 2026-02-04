@@ -46,7 +46,7 @@ def generate_about_me(metrics):
     if daily_avg > 0 and total > 0:
         speed_line = (
             f"I track every project and every outcome - currently {days_active} days into a quantified journey "
-            f"with a {total:,.0f} TL run rate and a {daily_avg:,.0f} TL/day average. "
+            f"with a ${total:,.0f} run rate and a ${daily_avg:,.0f}/day average. "
             "That same discipline is what I bring to your workflows: measurable results and no wasted time."
         )
     else:

@@ -19,7 +19,7 @@ def siteyi_guncelle():
     with open('script.js', 'w', encoding='utf-8') as f:
         f.write(yeni_js_content)
 
-    print(f"✅ Köprü kuruldu! Web sitesi verisi {guncel_kazanc} TL olarak güncellendi.")
+    print(f"✅ Bridge established! Website data updated to ${guncel_kazanc:,.0f}.")
 
 if __name__ == "__main__":
     siteyi_guncelle()
