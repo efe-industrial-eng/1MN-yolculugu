@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <div class="noise"></div>
@@ -38,6 +39,9 @@
       <p>Tahmini Varış: <span id="est-days" style="color: #ffcc00;">0</span> gün kaldı</p>
       <p>Hedeflenen Tarih: <span id="target-date" style="color: #ffcc00;">Hesaplanıyor...</span></p>
   </div>
+  <div class="chart-container" style="margin-top: 30px; height: 250px;">
+    <canvas id="earningChart"></canvas>
+</div>
 </div>
   <footer class="start-note">Started: February 2, 2026</footer>
   <script src="script.js"></script>
