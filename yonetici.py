@@ -4,46 +4,43 @@ import subprocess
 from datetime import datetime
 
 def guncelle():
-    # 1. VERİ GİRİŞİ VE TARİH HESABI
-    baslangic_tarihi = datetime(2026, 2, 2)
+    baslangic = datetime(2026, 2, 2)
     bugun = datetime.now()
-    gecen_gun = (bugun - baslangic_tarihi).days + 1
+    bugun_str = bugun.strftime("%Y-%m-%d")
+    gecen_gun = (bugun - baslangic).days + 1
     
-    yeni_kazanc = float(input(f"💰 {gecen_gun}. Gün Kazancını Gir (TL): "))
+    yeni = float(input(f"💰 {gecen_gun}. Gün Kazancını Gir (TL): "))
     
-    # 2. JSON GÜNCELLEME
+    # 1. JSON HAFIZASINI GÜNCELLE
     with open('data.json', 'r+') as f:
         data = json.load(f)
-        data['toplam_kazanc'] += yeni_kazanc
-        f.seek(0)
-        json.dump(data, f, indent=4)
-        f.truncate()
-        guncel_total = data['toplam_kazanc']
+        data['toplam_kazanc'] += yeni
+        # Yeni kaydı listeye ekle
+        data['gunluk_kayitlar'].append({"tarih": bugun_str, "kazanc": yeni})
+        
+        f.seek(0); json.dump(data, f, indent=4); f.truncate()
+        total = data['toplam_kazanc']
 
-    # 3. MÜHENDİSLİK ANALİZİ (PROJEKSİYON)
-    hedef = 1000000
-    gunluk_ortalam = guncel_total / gecen_gun
-    kalan_borc = hedef - guncel_total
-    tahmini_gun = int(kalan_borc / gunluk_ortalam) if gunluk_ortalam > 0 else 0
+    # 2. ANALİZ (Mühendislik Projeksiyonu)
+    avg = round(total / gecen_gun, 2)
+    est = int((1000000 - total) / avg) if avg > 0 else 0
 
-    # 4. KÖPRÜ (script.js Güncelleme)
+    # 3. KÖPRÜ (JavaScript Enjeksiyonu)
     with open('script.js', 'r', encoding='utf-8') as f:
-        js_content = f.read()
-    yeni_js = re.sub(r'const suAnkiKazanc = \d+;', f'const suAnkiKazanc = {int(guncel_total)};', js_content)
-    with open('script.js', 'w', encoding='utf-8') as f:
-        f.write(yeni_js)
-
-    # 5. OTOMATİK YAYIN (Git Push)
-    print(f"\n📊 ANALİZ RAPORU:")
-    print(f"---------------------------")
-    print(f"Günlük Ortalama: {gunluk_ortalam:.2f} TL")
-    print(f"Bu hızla hedefe {tahmini_gun} gün (~{tahmini_gun//365} yıl) sonra ulaşacaksın.")
-    print(f"---------------------------")
+        js = f.read()
     
-    print("\n🚀 Dünya vitrini güncelleniyor...")
+    js = re.sub(r'const suAnkiKazanc = \d+;', f'const suAnkiKazanc = {int(total)};', js)
+    js = re.sub(r'const gunlukOrtalama = [\d.]+;', f'const gunlukOrtalama = {avg};', js)
+    js = re.sub(r'const kalanGun = \d+;', f'const kalanGun = {est};', js)
+
+    with open('script.js', 'w', encoding='utf-8') as f:
+        f.write(js)
+
+    # 4. OTOMATİK YAYIN
     subprocess.run(["git", "add", "."])
-    subprocess.run(["git", "commit", "-m", f"update: {gecen_gun}. gun sonunda {guncel_total} TL"])
+    subprocess.run(["git", "commit", "-m", f"Log: {bugun_str} tarihinde {yeni} TL eklendi"])
     subprocess.run(["git", "push"])
+    print(f"\n✅ Veri günlüğe kaydedildi ve siteye fırlatıldı! Hedefe {est} gün kaldı.")
 
 if __name__ == "__main__":
     guncelle()

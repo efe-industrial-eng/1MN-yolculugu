@@ -3,9 +3,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const diffInDays = Math.floor((new Date() - startDate) / (1000 * 60 * 60 * 24)) + 1;
     
     // DİKKAT: yonetici.py bu rakamları otomatik olarak değiştirecek
-    const suAnkiKazanc = 300; 
-    const gunlukOrtalama = 66.67;
-    const kalanGun = 14997;
+    const suAnkiKazanc = 350; 
+    const gunlukOrtalama = 116.67;
+    const kalanGun = 8568;
 
     const hedef = 1000000;
     const yuzde = (suAnkiKazanc / hedef) * 100;
