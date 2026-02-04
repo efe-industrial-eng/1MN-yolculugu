@@ -1,24 +1,24 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. TARİH HESAPLAMA (Otomatik Gün Sayacı)
     const startDate = new Date("2026-02-02");
     const diffInDays = Math.floor((new Date() - startDate) / (1000 * 60 * 60 * 24)) + 1;
     
-    // 2. HTML ELEMANLARINI YAKALAMA (Dün tanımladığımız ID'ler)
-    const dayCounter = document.getElementById('day-counter');
-    const headerDay = document.getElementById('header-day');
-    const progressFill = document.getElementById('progress-fill');
-    const progressPercent = document.getElementById('progress-percent');
+    // DİKKAT: yonetici.py bu rakamları otomatik olarak değiştirecek
+    const suAnkiKazanc = 300; 
+    const gunlukOrtalama = 66.67;
+    const kalanGun = 14997;
 
-    // 3. VERİLERİ SAYFAYA ENJEKTE ETME
-    if (dayCounter) dayCounter.innerText = diffInDays;
-    if (headerDay) headerDay.innerText = "DAY " + diffInDays;
+    const hedef = 1000000;
+    const yuzde = (suAnkiKazanc / hedef) * 100;
 
-    // 4. İLERLEME HESABI (Mühendislik Formülü)
-    const toplamHedef = 1000000;
-    const suAnkiKazanc = 250; // Python verisi buraya akacak
-    const yuzde = (suAnkiKazanc / toplamHedef) * 100;
-
-    // 5. GÖRSEL GÜNCELLEME
-    if (progressFill) progressFill.style.width = yuzde + "%";
-    if (progressPercent) progressPercent.innerText = yuzde.toFixed(4);
+    // Temel Bilgiler
+    if(document.getElementById('day-counter')) document.getElementById('day-counter').innerText = diffInDays;
+    if(document.getElementById('header-day')) document.getElementById('header-day').innerText = "DAY " + diffInDays;
+    
+    // İlerleme Barı
+    if(document.getElementById('progress-fill')) document.getElementById('progress-fill').style.width = yuzde + "%";
+    if(document.getElementById('progress-percent')) document.getElementById('progress-percent').innerText = yuzde.toFixed(4);
+    
+    // YENİ: Analiz Raporu Verileri
+    if(document.getElementById('avg-earning')) document.getElementById('avg-earning').innerText = gunlukOrtalama;
+    if(document.getElementById('est-days')) document.getElementById('est-days').innerText = kalanGun;
 });
